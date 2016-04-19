@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1 onclick="console.log('clicked');">HTML Tag 속성에 event handler 추가하기 </h1>
+    <input type="text" onchange="console.log('changed');" onkeydown="console.log('typed');">
+
+    <form method="GET" action="b.html" id="form1"
+    onsubmit="console.log('form tag'); return false;">
+      이름:<input type="text" name="id"><br>
+      메세지:<input type="text" name="msg"><br>
+      <input type="submit">
+
+      <script>
+        var t = document.getElementById("form1");
+        t.onsubmit = function a(){
+          console.log('form property');
+          return false;
+        }
+
+        function b() {
+          console.log("from addEventListener");
+          return false;
+        }
+
+        function c() {
+          console.log("from c");
+          return false;
+        }
+
+        t.addEventListener("submit", b);
+        t.addEventListener("submit", c);
+
+        t.removeEventListener("submit", b);
+      </script>
+  </body>
+</htm>
